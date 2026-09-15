@@ -3,6 +3,9 @@
 > *Hello Docker, my old friend...*  
 > *I've come to build with you again...* 🎵
 
+🐳 **Docker Hub:**  
+https://hub.docker.com/r/rfperuzzo/ola_mundo_docker
+
 Bem-vindo ao projeto mais tecnologicamente exagerado já criado para imprimir:
 
 ```text
@@ -11,7 +14,7 @@ Hello, World!
 
 Porque simplesmente executar um programa seria fácil demais.
 
-Aqui nós utilizamos **Docker** para colocar um humilde `Hello World` dentro de um container, isolado da sociedade e protegido das perigosas variações do famoso:
+Aqui nós utilizamos **Java + Docker** para colocar um humilde `Hello World` dentro de um container, isolado da sociedade e protegido do famoso:
 
 > **"Mas na minha máquina funciona."**
 
@@ -24,12 +27,14 @@ Este projeto foi desenvolvido para fins acadêmicos com o objetivo de demonstrar
 - Java ☕
 - Docker 🐳
 - Dockerfile
-- criação de imagens
-- execução de containers
-- Git/GitHub
+- imagens Docker
+- containers
+- Docker Hub
+- Git
+- GitHub
 - sobrevivência durante trabalhos acadêmicos
 
-O sistema possui uma missão extremamente complexa:
+A aplicação possui uma missão extremamente complexa:
 
 ```text
 Exibir "Hello, World!"
@@ -39,7 +44,7 @@ Sim.
 
 É isso.
 
-Mas agora ele faz isso **dentro de um container**, então automaticamente parece 73% mais profissional.
+Mas agora ela faz isso **dentro de um container**, então automaticamente parece 73% mais profissional.
 
 ---
 
@@ -49,7 +54,7 @@ Mas agora ele faz isso **dentro de um container**, então automaticamente parece
 ┌───────────────────────────────┐
 │         SER HUMANO            │
 │                               │
-│  docker run hello-docker      │
+│ docker run ola_mundo_docker   │
 └───────────────┬───────────────┘
                 │
                 ▼
@@ -99,7 +104,7 @@ Ou simplesmente pequena mesmo.
 
 # ☕ Código Java
 
-O coração da nossa aplicação:
+O coração da aplicação:
 
 ```java
 public class Main {
@@ -113,7 +118,7 @@ public class Main {
 }
 ```
 
-Complexidade ciclomática:
+Complexidade do sistema:
 
 ```text
 ¯\_(ツ)_/¯
@@ -123,7 +128,7 @@ Complexidade ciclomática:
 
 # 🐳 Dockerfile
 
-O Dockerfile é responsável por explicar ao Docker como construir nossa gloriosa aplicação.
+O Dockerfile informa ao Docker como construir a imagem da aplicação.
 
 Exemplo:
 
@@ -141,35 +146,25 @@ CMD ["java", "Main"]
 
 Traduzindo para linguagem humana:
 
-```text
-FROM
-```
+### `FROM`
 
-> Docker, pega uma máquina que já tenha Java.
+> Docker, pega um ambiente que já tenha Java.
 
-```text
-WORKDIR
-```
+### `WORKDIR`
 
 > Entra nessa pasta aqui.
 
-```text
-COPY
-```
+### `COPY`
 
-> Copia meu código pra dentro dela.
+> Copia meu código para dentro do container.
 
-```text
-RUN
-```
+### `RUN`
 
 > Compila essa obra-prima.
 
-```text
-CMD
-```
+### `CMD`
 
-> Quando o container nascer, execute isso.
+> Quando o container iniciar, execute isso.
 
 Docker:
 
@@ -177,40 +172,58 @@ Docker:
 
 ---
 
-# 🔨 Construindo a imagem
+# 🐳 Imagem publicada no Docker Hub
 
-Abra o terminal na pasta do projeto.
-
-```bash
-docker build -t hello-docker-my-old-friend .
-```
-
-O `-t` significa que estamos dando um nome para a imagem.
-
-Neste caso:
+A imagem deste projeto está disponível publicamente no Docker Hub:
 
 ```text
-hello-docker-my-old-friend
+rfperuzzo/ola_mundo_docker
 ```
 
-O ponto no final:
+Repositório:
 
-```text
-.
-```
+https://hub.docker.com/r/rfperuzzo/ola_mundo_docker
 
-significa:
+Isso significa que você pode executar o projeto sem precisar clonar o código-fonte.
 
-> "Docker, o Dockerfile está aqui mesmo. Para de procurar."
+Sim.
+
+Alguém realmente colocou um `Hello World` no Docker Hub.
+
+E esse alguém fui eu.
 
 ---
 
-# ▶️ Executando
+# 📥 Baixando a imagem
 
-Depois da imagem construída:
+Para baixar a imagem:
 
 ```bash
-docker run hello-docker-my-old-friend
+docker pull rfperuzzo/ola_mundo_docker:latest
+```
+
+Docker então fará o download da imagem.
+
+Algo parecido com:
+
+```text
+latest: Pulling from rfperuzzo/ola_mundo_docker
+Digest: sha256:...
+Status: Downloaded newer image
+```
+
+Tradução:
+
+> A baleia chegou. 🐳
+
+---
+
+# ▶️ Executando diretamente pelo Docker Hub
+
+Depois de baixar:
+
+```bash
+docker run rfperuzzo/ola_mundo_docker:latest
 ```
 
 Resultado esperado:
@@ -219,21 +232,16 @@ Resultado esperado:
 Hello Docker, my old friend!
 ```
 
-Se isso apareceu:
+Pronto.
 
-# 🎉 PARABÉNS
+Você utilizou:
 
-Você acabou de utilizar:
-
-- um sistema operacional;
-- virtualização;
-- containers;
+- internet;
+- Docker Hub;
+- uma imagem Docker;
+- um container;
 - Java;
-- Docker;
-- terminal;
 - isolamento de processos;
-- imagens;
-- layers;
 
 para imprimir uma frase.
 
@@ -241,30 +249,112 @@ Tecnologia.
 
 ---
 
-# 🔎 Ver imagens Docker
+# 🚀 Forma ainda mais rápida
 
-Para visualizar as imagens existentes:
+Você nem precisa executar o `docker pull` manualmente.
+
+Pode simplesmente usar:
+
+```bash
+docker run rfperuzzo/ola_mundo_docker:latest
+```
+
+Se a imagem não existir no seu computador, o Docker automaticamente fará o download.
+
+Basicamente:
+
+```text
+Você
+  │
+  ▼
+docker run
+  │
+  ▼
+Docker: "não tenho essa imagem"
+  │
+  ▼
+Docker Hub
+  │
+  ▼
+download
+  │
+  ▼
+container
+  │
+  ▼
+HELLO WORLD
+```
+
+---
+
+# 🔨 Construindo a imagem localmente
+
+Caso queira construir a imagem a partir do código-fonte:
+
+```bash
+docker build -t ola_mundo_docker .
+```
+
+O parâmetro:
+
+```text
+-t
+```
+
+serve para definir o nome da imagem.
+
+E o ponto:
+
+```text
+.
+```
+
+significa:
+
+> "Docker, o Dockerfile está aqui. Não inventa moda."
+
+---
+
+# ▶️ Executando a imagem local
+
+Depois do build:
+
+```bash
+docker run ola_mundo_docker
+```
+
+Resultado:
+
+```text
+Hello Docker, my old friend!
+```
+
+---
+
+# 🔎 Visualizando imagens
+
+Para listar as imagens Docker:
 
 ```bash
 docker images
 ```
 
-Ou:
+ou:
 
 ```bash
 docker image ls
 ```
 
-Você deverá encontrar algo parecido com:
+Você poderá encontrar algo como:
 
 ```text
-REPOSITORY                    TAG       IMAGE ID
-hello-docker-my-old-friend    latest    a1b2c3d4e5f6
+REPOSITORY                       TAG       IMAGE ID
+rfperuzzo/ola_mundo_docker       latest    a1b2c3d4e5f6
 ```
 
 Não se apegue ao `IMAGE ID`.
 
-Ele vai mudar.
+Ele muda.
 
 Assim como as amizades.
 
@@ -272,27 +362,21 @@ Mas Docker estará lá.
 
 ---
 
-# 📦 Ver containers
+# 📦 Visualizando containers
 
-Containers rodando:
+Para visualizar containers em execução:
 
 ```bash
 docker ps
 ```
 
-Todos os containers, inclusive os que já encerraram:
+Para visualizar todos os containers:
 
 ```bash
 docker ps -a
 ```
 
-Como nosso programa só imprime uma mensagem e termina, provavelmente ele aparecerá em:
-
-```bash
-docker ps -a
-```
-
-com status parecido com:
+Como nosso programa apenas imprime uma mensagem e encerra, provavelmente aparecerá com:
 
 ```text
 Exited (0)
@@ -306,9 +390,9 @@ Significa que ele cumpriu sua missão.
 
 ---
 
-# 🧹 Removendo container
+# 🧹 Removendo um container
 
-Primeiro descubra o ID:
+Primeiro:
 
 ```bash
 docker ps -a
@@ -338,11 +422,13 @@ Docker:
 
 # 🗑️ Removendo a imagem
 
+Para remover:
+
 ```bash
-docker rmi hello-docker-my-old-friend
+docker rmi rfperuzzo/ola_mundo_docker:latest
 ```
 
-Caso o Docker reclame que existe algum container utilizando a imagem:
+Caso o Docker reclame:
 
 ```text
 conflict: unable to delete
@@ -350,9 +436,9 @@ conflict: unable to delete
 
 Tradução:
 
-> "Arruma tua bagunça primeiro."
+> Arruma tua bagunça primeiro.
 
-Remova os containers relacionados e tente novamente.
+Provavelmente existe algum container usando essa imagem.
 
 ---
 
@@ -376,75 +462,116 @@ Digite:
 y
 ```
 
-E metade da bagunça desaparecerá.
+E a bagunça desaparecerá.
 
 🫰
 
 ---
 
-# 🐳 Fluxo completo
+# 🐳 O que é uma imagem Docker?
 
-Para quem esqueceu tudo cinco minutos depois:
+Uma imagem funciona como um molde.
 
-```bash
-docker build -t hello-docker-my-old-friend .
+```text
+IMAGEM
+  │
+  ├── Java
+  ├── código
+  ├── configuração
+  │
+  ▼
+CONTAINER
 ```
 
-Depois:
+Pense assim:
 
-```bash
-docker run hello-docker-my-old-friend
+```text
+Imagem = receita do bolo
+
+Container = bolo pronto
 ```
 
-Fim.
+Docker Hub:
 
-Obrigado por participar do curso.
+```text
+Padaria.
+```
 
 ---
 
-# 🧪 Teste científico extremamente avançado
+# 📦 O que é um container?
 
-### Entrada
+Um container é uma instância executável de uma imagem.
 
-```text
-Nenhuma
-```
+Forma acadêmica:
 
-### Processamento
+> Ambiente isolado utilizado para executar uma aplicação juntamente com suas dependências.
 
-```text
-Muito
-```
+Forma normal:
 
-### Saída
+> Uma caixinha onde colocamos o programa para ele não sair correndo pelo computador.
 
-```text
-Hello Docker, my old friend!
-```
+---
 
-### Resultado
+# ☁️ O que é Docker Hub?
+
+O Docker Hub é um serviço utilizado para armazenar e distribuir imagens Docker.
+
+Neste projeto:
 
 ```text
-✅ FUNCIONA
+Código Java
+    │
+    ▼
+Dockerfile
+    │
+    ▼
+docker build
+    │
+    ▼
+Imagem
+    │
+    ▼
+Docker Hub
+    │
+    ▼
+docker pull
+    │
+    ▼
+Container
 ```
 
-Conclusão científica:
+Nosso repositório:
 
-> Docker realmente consegue executar um Hello World.
+```text
+rfperuzzo/ola_mundo_docker
+```
 
-Publicação na Nature pendente.
+Agora qualquer pessoa com Docker pode executar a aplicação com:
+
+```bash
+docker run rfperuzzo/ola_mundo_docker:latest
+```
+
+Sem IDE.
+
+Sem configurar Java.
+
+Sem NetBeans.
+
+Sem sacrificar três horas descobrindo por que o `JAVA_HOME` está errado.
 
 ---
 
 # 🤔 Por que Docker?
 
-Imagine a seguinte conversa:
+Imagine:
 
-**Pessoa 1:**
+Pessoa 1:
 
 > Aqui não funciona.
 
-**Pessoa 2:**
+Pessoa 2:
 
 > Mas na minha máquina funciona.
 
@@ -458,79 +585,28 @@ Docker entra na sala:
       ───────────────────
 ```
 
-Essa é uma das ideias principais do Docker.
-
-A aplicação e o ambiente necessário para executá-la podem ser empacotados juntos.
-
-Assim reduzimos problemas causados por diferenças entre computadores.
+Uma das principais ideias dos containers é manter um ambiente consistente para a aplicação.
 
 ---
 
-# 🐳 O que é uma imagem?
+# 🐳 Docker não é exatamente uma máquina virtual
 
-Uma **imagem Docker** funciona como um molde.
+Uma máquina virtual normalmente executa um sistema operacional completo.
 
-Exemplo:
-
-```text
-IMAGEM
-  │
-  ├── Java
-  ├── aplicação
-  ├── configuração
-  │
-  ▼
-CONTAINER
-```
-
-Uma mesma imagem pode criar vários containers.
-
-Pense assim:
+Exemplo simplificado:
 
 ```text
-Imagem = receita do bolo
-
-Container = bolo pronto
-```
-
-Docker Hub:
-
-> padaria.
-
----
-
-# 📦 O que é um container?
-
-Container é uma instância executável de uma imagem.
-
-Ou, academicamente falando:
-
-> Um ambiente isolado utilizado para executar uma aplicação juntamente com suas dependências.
-
-Ou, menos academicamente:
-
-> Uma caixinha onde colocamos o programa para ele não sair correndo pelo computador.
-
----
-
-# 🐳 Docker não é máquina virtual
-
-Embora sejam conceitos parecidos, containers normalmente são mais leves.
-
-Máquina Virtual:
-
-```text
-PC
+Computador
 └── Sistema Operacional
     └── Virtualização
         └── Outro Sistema Operacional
             └── Aplicação
 ```
 
-Docker:
+Com containers:
 
 ```text
-PC
+Computador
 └── Sistema Operacional
     └── Docker
         └── Container
@@ -547,113 +623,156 @@ mais baleia
 
 ---
 
-# ☁️ Docker Hub
+# 📤 Publicando no Docker Hub
 
-Caso a imagem seja publicada no Docker Hub, outras pessoas poderão executar o projeto sem precisar baixar o código-fonte.
-
-Exemplo:
+Depois de construir uma nova versão:
 
 ```bash
-docker pull usuario/hello-docker-my-old-friend
+docker build -t rfperuzzo/ola_mundo_docker:latest .
+```
+
+Login:
+
+```bash
+docker login
 ```
 
 Depois:
 
 ```bash
-docker run usuario/hello-docker-my-old-friend
+docker push rfperuzzo/ola_mundo_docker:latest
 ```
 
-E pronto.
+Fluxo:
 
-Seu Hello World viajou pela internet dentro de uma baleia.
+```text
+Código
+  │
+  ▼
+docker build
+  │
+  ▼
+Imagem local
+  │
+  ▼
+docker push
+  │
+  ▼
+Docker Hub
+  │
+  ▼
+🌎 INTERNET
+```
+
+Agora o Hello World conquistou alcance internacional.
 
 ---
 
-# 🧑‍💻 Git
+# 🏷️ Tags
 
-Para adicionar os arquivos:
+A tag padrão utilizada é:
 
-```bash
-git add .
+```text
+latest
 ```
 
-Criar um commit:
+Exemplo:
 
 ```bash
-git commit -m "feat: adiciona o Hello World mais containerizado da história"
+docker pull rfperuzzo/ola_mundo_docker:latest
 ```
 
-Enviar para o GitHub:
+Também seria possível criar versões:
+
+```text
+1.0
+1.1
+2.0
+```
+
+Exemplo:
 
 ```bash
-git push
+docker build -t rfperuzzo/ola_mundo_docker:1.0 .
 ```
+
+Depois:
+
+```bash
+docker push rfperuzzo/ola_mundo_docker:1.0
+```
+
+Porque obviamente nosso Hello World precisa de versionamento empresarial.
 
 ---
 
-# 🏷️ Sugestões de commits profissionais
+# 🧪 Teste científico extremamente avançado
 
-Você também pode utilizar mensagens altamente corporativas como:
-
-```text
-feat: hello world agora possui infraestrutura de multinacional
-```
+## Entrada
 
 ```text
-feat: adiciona baleia
+Nenhuma
 ```
+
+## Processamento
 
 ```text
-fix: convence docker a cooperar
+Muito.
 ```
+
+## Saída
 
 ```text
-fix: na minha máquina agora funciona
+Hello Docker, my old friend!
 ```
+
+## Resultado
 
 ```text
-refactor: reorganiza absolutamente 3 arquivos
+✅ FUNCIONA
 ```
+
+Conclusão científica:
+
+> Docker realmente consegue executar um Hello World.
+
+Publicação na Nature pendente.
+
+---
+
+# 🐳 Fluxo completo
+
+Caso você esqueça tudo daqui a cinco minutos:
+
+### Baixar
+
+```bash
+docker pull rfperuzzo/ola_mundo_docker:latest
+```
+
+### Executar
+
+```bash
+docker run rfperuzzo/ola_mundo_docker:latest
+```
+
+### Resultado
 
 ```text
-docs: adiciona documentação maior que o projeto
+Hello Docker, my old friend!
 ```
 
-Ou o inevitável:
+Fim.
 
-```text
-fix: agora vai
-```
-
-seguido de:
-
-```text
-fix: agora vai mesmo
-```
-
-seguido de:
-
-```text
-fix: FINAL
-```
-
-seguido de:
-
-```text
-fix: FINAL_REAL
-```
-
-seguido de:
-
-```text
-fix: FINAL_REAL_AGORA_VAI
-```
+Obrigado por participar do curso.
 
 ---
 
 # 🚨 Possíveis problemas
 
 ## Docker não encontrado
+
+Erro:
 
 ```text
 docker: command not found
@@ -662,7 +781,7 @@ docker: command not found
 Diagnóstico:
 
 ```text
-Você provavelmente não instalou o Docker.
+Docker provavelmente não está instalado.
 ```
 
 Tratamento:
@@ -677,7 +796,7 @@ Medicina baseada em evidências.
 
 ## Docker Desktop fechado
 
-Possível erro:
+Erro parecido com:
 
 ```text
 Cannot connect to the Docker daemon
@@ -685,45 +804,13 @@ Cannot connect to the Docker daemon
 
 Solução:
 
+```text
 Abra o Docker Desktop.
+```
 
 Sim.
 
 Era isso.
-
----
-
-## Build não encontra Dockerfile
-
-Erro parecido com:
-
-```text
-failed to read dockerfile
-```
-
-Confira se existe um arquivo chamado exatamente:
-
-```text
-Dockerfile
-```
-
-Não:
-
-```text
-Dockerfile.txt
-```
-
-Não:
-
-```text
-dockerfile-final.txt
-```
-
-Muito menos:
-
-```text
-Dockerfile-final-agora-vai-versao2-COPIA.txt
-```
 
 ---
 
@@ -733,12 +820,12 @@ Dockerfile-final-agora-vai-versao2-COPIA.txt
 |---|---|
 | Java | ☕ |
 | Docker | 🐳 |
+| Docker Hub | ☁️ |
 | Git | 🐙 |
 | GitHub | 🌎 |
-| Inteligência artificial | provavelmente |
 | Café | obrigatório |
-| Stack Overflow | sempre presente espiritualmente |
-| `Hello World` | protagonista |
+| Hello World | protagonista |
+| Sanidade | opcional |
 
 ---
 
@@ -749,7 +836,9 @@ Dockerfile-final-agora-vai-versao2-COPIA.txt
 ```text
 [x] Hello
 [x] World
+[x] Java
 [x] Docker
+[x] Docker Hub
 ```
 
 ### Versão 2.0
@@ -796,7 +885,7 @@ Hello World
 
 ---
 
-# 📉 Diagrama de evolução
+# 📉 Evolução natural do projeto
 
 ```text
 Hello World
@@ -814,7 +903,7 @@ Docker Hub
 Kubernetes
      │
      ▼
-AWS
+Cloud
      │
      ▼
 Terraform
@@ -827,7 +916,7 @@ Kafka
      │
      ▼
 ┌─────────────────────┐
-│    HELLO WORLD      │
+│     HELLO WORLD     │
 └─────────────────────┘
 ```
 
@@ -843,7 +932,10 @@ Arquitetura moderna resumida.
 - ✅ Executou um container
 - ✅ Aprendeu `docker build`
 - ✅ Aprendeu `docker run`
-- ✅ Consegue falar "containerização" em reuniões
+- ✅ Publicou no Docker Hub
+- ✅ Aprendeu `docker pull`
+- ✅ Aprendeu `docker push`
+- ✅ Pode falar "containerização" em reuniões
 - ✅ Pode colocar Docker no LinkedIn
 - ⬜ Entender completamente Docker
 - ⬜ Ninguém entende completamente Docker
@@ -852,33 +944,37 @@ Arquitetura moderna resumida.
 
 # 🧠 Conhecimentos adquiridos
 
-Após concluir este projeto, o estudante deverá ser capaz de responder:
+Depois deste projeto, o estudante deverá conseguir responder:
 
-**O que é Docker?**
+### O que é Docker?
 
-> Uma plataforma para criação e execução de containers.
+Uma plataforma utilizada para construir, distribuir e executar aplicações em containers.
 
-**O que é uma imagem?**
+### O que é uma imagem?
 
-> Um modelo utilizado para criação dos containers.
+Um modelo utilizado para criar containers.
 
-**O que é um container?**
+### O que é um container?
 
-> Uma instância executável de uma imagem.
+Uma instância executável de uma imagem.
 
-**O que é Dockerfile?**
+### O que é Dockerfile?
 
-> Um arquivo contendo instruções utilizadas na construção de uma imagem.
+Um arquivo contendo instruções utilizadas para construir uma imagem.
 
-**Por que fizemos tudo isso para um Hello World?**
+### O que é Docker Hub?
 
-> Porque valia nota.
+Um serviço utilizado para armazenar e distribuir imagens Docker.
+
+### Por que fizemos tudo isso para um Hello World?
+
+Porque valia nota.
 
 ---
 
 # 📜 Licença
 
-Este projeto está protegido pela licença acadêmica universal:
+Este projeto utiliza a tradicional licença acadêmica:
 
 ```text
 PODE COPIAR,
@@ -887,13 +983,15 @@ MAS PELO MENOS MUDA O NOME.
 
 Também conhecida como:
 
-### MIT — Mano, Inventa Também.
+## MIT
+
+### Mano, Inventa Também.
 
 ---
 
 # 👨‍🎓 Projeto acadêmico
 
-Desenvolvido durante atividades relacionadas ao estudo de programação, Git e Docker.
+Projeto desenvolvido para estudo de programação, Java, Git e Docker.
 
 Nenhuma baleia foi ferida durante a criação deste projeto.
 
@@ -929,16 +1027,20 @@ of Docker.
 
 ### Porque rodar `Hello World` normalmente seria fácil demais.
 
-`Java ☕ + Docker 🐳 + Git 🐙 + decisões questionáveis`
+**Java ☕ + Docker 🐳 + Docker Hub ☁️ + decisões questionáveis**
 
-**Status do projeto**
+Docker Hub:
+
+https://hub.docker.com/r/rfperuzzo/ola_mundo_docker
 
 ```text
-BUILD:     ✅
-CONTAINER: ✅
-HELLO:     ✅
-WORLD:     ✅
-SANIDADE:  ❌
+BUILD:       ✅
+IMAGE:       ✅
+CONTAINER:   ✅
+DOCKER HUB:  ✅
+HELLO:       ✅
+WORLD:       ✅
+SANIDADE:    ❌
 ```
 
 </div>
